@@ -27,9 +27,16 @@ module.exports.init = function(inject){
         req.linkedIn = req.body.linkedIn ? req.body.linkedIn.toString() : "";
         req.behance = req.body.behance ? req.body.behance.toString() : "";
 
+        req.password = req.body.password ? req.body.password.toString() : "";
+
         if(!/^[a-zA-Z ]+$/.test(req.name)){
             return res.render("register",{
                 errField : "name"
+            });
+        }
+        if(!/^.{5,}+$/.test(req.password)){
+            return res.render("register",{
+                errField : "password"
             });
         }
         if(!/^\d\d\w\w\w\d\d\d\d$/i.test(req.regNo)){
@@ -61,7 +68,7 @@ module.exports.init = function(inject){
             github : req.github,
             linkedIn : req.linkedIn,
             behance : req.behance
-        }), req.body.password, function(err, user) {
+        }), req.password, function(err, user) {
             if (err) {
                 req.flash("errMessage","Registration failed. Please recheck all the fields.");
                 return res.redirect("/register");
