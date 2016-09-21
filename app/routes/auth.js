@@ -11,6 +11,9 @@ module.exports.init = function(inject){
     });
 
     router.post("/register",function(req,res,next){
+
+        res.locals.req = req;
+
         req.name = req.body.name ? req.body.name.toString() : "";
         req.regNo = req.body.regNo ? req.body.regNo.toString().toUpperCase() : "";
         req.email = req.body.email ? eq.body.email.toString().toLowerCase() : "";
@@ -44,7 +47,7 @@ module.exports.init = function(inject){
                 errField : "contact"
             });
         }
-        
+
         next();
     },function(req, res) {
         User.register(new User({
