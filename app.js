@@ -39,12 +39,14 @@ app.use(passport.session());
 
 app.use(express.static('public'));
 app.use("/assets",express.static('public'));
+app.use(interceptors.allRequest);
 
 injector.initDAO(["userDAO"]);
 
 //app.use(interceptors.autoLogin);
 injector.injectRoute(app,"/","index");
 injector.injectRoute(app,"/","auth");
+injector.injectRoute(app,"/admin","admin");
 
 //PASSPORT
 var User = require('./app/models/user');

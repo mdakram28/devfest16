@@ -21,6 +21,10 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^1.0.0",
     "serve-favicon": "~2.3.0",
-    "toastr": "^2.1.2"
+    "toastr": "^2.1.2",
+    "nodemailer" : "latest",
+    "nodemailer-sendgrid-transport" : "latest",
+    "jsonwebtoken" : "latest",
+    "basic-auth" : "latest"
   }
 }

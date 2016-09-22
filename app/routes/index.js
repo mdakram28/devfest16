@@ -6,10 +6,7 @@ var router = express.Router();
 module.exports.router = router;
 module.exports.init = function(inject){
     router.get("/",function(req,res){
-        res.redirect("/contest");
+        console.log(res.locals.message);
+        res.render("index");
     });
-
-    router.get("/contests",function(req,res){
-        res.redirect("/contest");
-        });
 }

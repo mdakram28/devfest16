@@ -3,10 +3,10 @@ var passport = require('passport');
 var $ = module.exports;
 
 $.allRequest = function(req,res,next){
-    res.locals.message = req.flash("message");
-    res.locals.errMessage = req.flash("errMessage");
-    if(res.locals.message=="")res.locals.message = undefined;
-    if(res.locals.errMessage=="")res.locals.errMessage = undefined;
+    res.locals.message = req.flash("message")[0] || "";
+    res.locals.errMessage = req.flash("errMessage")[0] || "";
+    //if(res.locals.message=="")res.locals.message = undefined;
+    //if(res.locals.errMessage=="")res.locals.errMessage = undefined;
     res.locals.user = req.user;
     res.locals.isAuthenticated = req.isAuthenticated();
     res.locals.errors = {};

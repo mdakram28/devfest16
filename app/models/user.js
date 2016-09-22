@@ -6,9 +6,9 @@ var userSchema = mongoose.Schema({
         type : String,
         required : true
     },
+    username : String,
     regNo : {
         type : String,
-        unique : true,
         uppercase : true,
         required : true,
         trim : true
@@ -25,6 +25,11 @@ var userSchema = mongoose.Schema({
         type : Boolean,
         default : false
     },
+    verificationEmailSent : {
+        type : Boolean,
+        default : false
+    },
+    verifiedAt : Date,
     dateRegistered : {
         type : Date,
         required : true
@@ -37,9 +42,14 @@ var userSchema = mongoose.Schema({
     gender : {
         type : String,
         enum : ["male","female"],
-        required : true
+        required : true,
+        default : "male"
     },
-    skills : [String],
+    blockRoom : String,
+    skills : {
+        type : [String],
+        default : []
+    },
     github : String,
     linkedIn : String,
     behance : String
